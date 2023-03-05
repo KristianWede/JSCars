@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+
+
+</head>
+
+<body>
+
+    <h1>Hello There</h1>
+
+
+<div id="block1" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="block2" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="block3" style="width: 100px;margin: 1px;">&nbsp;</div>
+<button id="btn">Get new colors!</button>
+
+<script>
+    let uniqueList = [];
+    
+    const button = document.getElementById("btn");
+    button.addEventListener('click',randomizeColors);
+
+    const colors = ["blue","black","red","yellow","purple","white"];
+    const allDiv = document.querySelectorAll("div");
+    allDiv.forEach(e => e.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)]);
+
+
+    function randomizeColors(){
+        for(let i = 0;uniqueList.length < 3;i++){
+        addToList(colors[Math.floor(Math.random() * colors.length)]);
+        }
+        applyColors();
+    };
+
+    function addToList(element){
+        if(!uniqueList.includes(element)){
+            uniqueList.push(element);
+        };
+    }
+
+    function applyColors(){
+        document.getElementById("block1").style.backgroundColor = uniqueList[0];
+        document.getElementById("block2").style.backgroundColor = uniqueList[1];
+        document.getElementById("block3").style.backgroundColor = uniqueList[2];
+        //Remove all elements on list afterwards, so the button can be clicked again.
+        uniqueList.splice(0, uniqueList.length);
+    }
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+
+<style>
+    .my-div {width: 25px; height: 25px;background-color:red; margin:1px;}
+</style>
+
+
+</head>
+
+<body>
+
+<div id="outer">
+<div class="my-div" id="one"></div>
+<div class="my-div" id="two"></div>
+<div class="my-div" id="three"></div>
+<div class="my-div" id="four"></div>
+<div class="my-div" id="five"></div>
+<div class="my-div" id="six"></div>
+<div class="my-div" id="seven"></div>
+<div class="my-div" id="eight"></div>
+<div class="my-div" id="nine"></div>
+<div class="my-div" id="ten"></div>
+<div class="my-div" id="eleven"></div>
+<div class="my-div" id="twelve"></div>
+</div>
+
+<p id="message">Update here!</p>
+
+<script>
+    const message = document.querySelector("#message");
+    const div1 = document.getElementById("one")
+
+    div1.addEventListener("click",() => {
+        message.textContent = "Hi from " + div1.id
+    })
+
+    const div2 = document.getElementById("two")
+
+    div2.addEventListener("click",() => {
+        message.textContent = "Hi from " + div2.id;
+    })
+
+
+    //bruger event bubble mechanism
+    const outerDiv = document.getElementById("outer");
+
+    outerDiv.addEventListener("click",(event) => {
+        message.textContent = "Hello from " + event.target.id;
+    })
+
+</script>
+
+</body>
+
+</html>
